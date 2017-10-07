@@ -215,11 +215,11 @@ function displayOnlineSchool() {
     }
   }
 };
-displayOnlineschool();
+displayOnlineSchool();
 
 
 function inName(name) {
-  name = name.trim().split("");
+  name = name.trim().split(" ");
   console.log(name);
   name[1] = name[1].toUpperCase();
   name[0] = name[0].slice(0, 1).toUpperCase() + name[0].slice(1).toLowerCase();
@@ -227,5 +227,3 @@ function inName(name) {
 };
 
 $('#main').append(internationalizeButton);
-
-}
