@@ -100,22 +100,35 @@ var work = {
     }
   ]
 };
-// var projects =
-// {
-// "projects" :
-// [
-// {
-// "title" : "Design",
-// "description" : "Data Visualisation @ D3.js",
-// "dates" : "18th March"
-// },
-// {
-// "title" : "Development",
-// "description" : "AIML @ python",
-// "dates" : "31st March"
-// }
-// ]
-// };
+var projects = {
+  projects: [{
+    "title": "Build a Portfolio Site",
+    "dates": "July 2017",
+    "description": "Created a mockup of a portfolio site",
+    //"images": ["", ""]
+  }]
+};
+
+projects.display = function() {
+  for (i in projects.projects) {
+    $("#project").append(HTMLprojectStart);
+    var formattedTitle = HTMLprojectTitle.replace("%data%", projects.projects[i].title);
+    $("#project").append(formattedTitle);
+    var formattedDates = HTMLprojectDates.replace("%data%", projects.projects[i].dates);
+    $("#project").append(formattedDates);
+    var formattedDescription = HTMLprojectDescription.replace("%data%", projects.projects[i].description);
+    $("#project").append(formattedDescription);
+
+    // if (projects.projects[i].images.length > 0) {
+    //   for (image in projects.projects[i].images) {
+    //     var formattedImage = HTMLprojectImage.replace("%data%", projects.projects[i].images[image]);
+    //     $("#project").append(formattedImage);
+    //   };
+    // };
+
+  };
+};
+projects.display();
 var education = {
   "schools": [{
       "name": "Laguardia Community Colege",
@@ -141,6 +154,28 @@ var education = {
     "url": "udacity.com"
   }
 };
+projects.display();
+
+
+function displaySchool() {
+  if (education.schools.length > 0) {
+    $("#education").append(HTMLschoolStart);
+    for (var i = 0; i < education.schools.length; i++) {
+      var formattedSchoolName = HTMLschoolName.replace("%data%", education.schools[i].name);
+      var formattedSchoolDegree = HTMLschoolDegree.replace("%data%", education.schools[i].degree);
+      var formattedSchoolDates = HTMLschoolDates.replace("%data%", education.schools[i].dates);
+      var formattedSchoolLocation = HTMLschoolLocation.replace("%data%", education.schools[i].city);
+      var formattedSchoolMajor = HTMLschoolMajor.replace("%data%", education.schools[i].majors);
+      $("#education").append(formattedSchoolName);
+      $("#education").append(formattedSchoolDegree);
+      $("#education").append(formattedSchoolDates);
+      $("#education").append(formattedSchoolMajor);
+
+    }
+  }
+};
+
+displaySchool();
 
 //var formattedName = HTMLheaderName.replace("%data%", bio.name);
 //$("#header").append(formattedName);
@@ -177,25 +212,7 @@ function displayWork() {
 displayWork();
 
 
-function displaySchool() {
-  if (education.schools.length > 0) {
-    $("#education").append(HTMLschoolStart);
-    for (var i = 0; i < education.schools.length; i++) {
-      var formattedSchoolName = HTMLschoolName.replace("%data%", education.schools[i].school);
-      var formattedSchoolDegree = HTMLschoolDegree.replace("%data%", education.schools[i].degree);
-      var formattedSchoolDates = HTMLschoolDates.replace("%data%", education.schools[i].years);
-      var formattedSchoolLocation = HTMLschoolLocation.replace("%data%", education.schools[i].location);
-      var formattedSchoolMajor = HTMLschoolMajor.replace("%data%", education.schools[i].major);
-      $("#education").append(formattedSchoolName);
-      $("#education").append(formattedSchoolDegree);
-      $("#education").append(formattedSchoolDates);
-      $("#education").append(formattedSchoolMajor);
 
-    }
-  }
-};
-
-displaySchool();
 
 function displayOnlineSchool() {
   if (education.onlineCourses.length > 0) {
@@ -218,12 +235,12 @@ function displayOnlineSchool() {
 displayOnlineSchool();
 
 
-function inName(name) {
-  name = name.trim().split(" ");
-  console.log(name);
-  name[1] = name[1].toUpperCase();
-  name[0] = name[0].slice(0, 1).toUpperCase() + name[0].slice(1).toLowerCase();
-  return name[0] + " " + name[1];
-};
-
-$('#main').append(internationalizeButton);
+// function inName(name) {
+//   name = name.trim().split(" ");
+//   console.log(name);
+//   name[1] = name[1].toUpperCase();
+//   name[0] = name[0].slice(0, 1).toUpperCase() + name[0].slice(1).toLowerCase();
+//   return name[0] + " " + name[1];
+// };
+//
+// $('#main').append(internationalizeButton);
