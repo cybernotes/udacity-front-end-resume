@@ -108,27 +108,45 @@ var projects = {
     //"images": ["", ""]
   }]
 };
-
 projects.display = function() {
-  for (i in projects.projects) {
-    $("#project").append(HTMLprojectStart);
-    var formattedTitle = HTMLprojectTitle.replace("%data%", projects.projects[i].title);
-    $("#project").append(formattedTitle);
-    var formattedDates = HTMLprojectDates.replace("%data%", projects.projects[i].dates);
-    $("#project").append(formattedDates);
-    var formattedDescription = HTMLprojectDescription.replace("%data%", projects.projects[i].description);
-    $("#project").append(formattedDescription);
+  if (projects.projects.length > 0) {
+    for (i in projects.projects) {
+      $("#projects").append(HTMLprojectStart);
 
-    // if (projects.projects[i].images.length > 0) {
-    //   for (image in projects.projects[i].images) {
-    //     var formattedImage = HTMLprojectImage.replace("%data%", projects.projects[i].images[image]);
-    //     $("#project").append(formattedImage);
-    //   };
-    // };
+      var formattedProjectTitle = HTMLprojectTitle.replace("%data%", projects.projects[i].title).replace("#", projects.projects[i].url);
+      var formattedProjectDates = HTMLprojectDates.replace("%data%", projects.projects[i].datesWorked);
+      var formattedProjectDescription = HTMLprojectDescription.replace("%data%", projects.projects[i].description);
 
-  };
-};
-projects.display();
+      $(".project-entry:last").append(formattedProjectTitle);
+      $(".project-entry:last").append(formattedProjectDates);
+      $(".project-entry:last").append(formattedProjectDescription);
+
+
+
+
+    }
+  }
+}
+//projects.display = function() {
+// for (i in projects.projects) {
+//   $("#project").append(HTMLprojectStart);
+//   var formattedTitle = HTMLprojectTitle.replace("%data%", projects.projects[i].title);
+//   $("#project-entry").append(formattedTitle);
+//   var formattedDates = HTMLprojectDates.replace("%data%", projects.projects[i].dates);
+//   $("#project-entry").append(formattedDates);
+//   var formattedDescription = HTMLprojectDescription.replace("%data%", projects.projects[i].description);
+//   $("#project-entry").append(formattedDescription);
+
+// if (projects.projects[i].images.length > 0) {
+//   for (image in projects.projects[i].images) {
+//     var formattedImage = HTMLprojectImage.replace("%data%", projects.projects[i].images[image]);
+//     $("#project").append(formattedImage);
+//   };
+// };
+
+// };
+// };
+//projects.display();
 var education = {
   "schools": [{
       "name": "Laguardia Community Colege",
