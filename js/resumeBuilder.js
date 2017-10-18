@@ -184,7 +184,7 @@ function displaySchool() {
       var formattedSchoolDates = HTMLschoolDates.replace("%data%", education.schools[i].dates);
       var formattedSchoolLocation = HTMLschoolLocation.replace("%data%", education.schools[i].city);
       var formattedSchoolMajor = HTMLschoolMajor.replace("%data%", education.schools[i].majors);
-      $("#education").append(formattedSchoolName);
+      $("#education ").append(formattedSchoolName);
       $("#education").append(formattedSchoolDegree);
       $("#education").append(formattedSchoolDates);
       $("#education").append(formattedSchoolMajor);
@@ -252,7 +252,7 @@ function displayOnlineSchool() {
 };
 displayOnlineSchool();
 
-
+$("#mapDiv").append(googleMap);
 // function inName(name) {
 //   name = name.trim().split(" ");
 //   console.log(name);
