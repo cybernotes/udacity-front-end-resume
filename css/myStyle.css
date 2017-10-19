@@ -1,0 +1,40 @@
+h1 {
+  color: #231942;
+}
+
+#header {
+  background-color: #5E5768;
+}
+
+.orange-text {
+  color: #53A2BE;
+}
+
+#skills-h3 {
+  color: #53A2BE;
+}
+
+a {
+  color: #643A71;
+}
+
+#education {
+  background-color: #9F86C0;
+}
+
+#workExperience {
+  background-color: #9F86C0;
+}
+
+h2 {
+  color: #231942;
+}
+
+.date-text {
+  color: #3E5C76;
+}
+
+.orange {
+  background-color: #53A2BE;
+  color: #231942;
+}
