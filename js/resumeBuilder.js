@@ -110,7 +110,7 @@ var projects = {
 };
 projects.display = function() {
   if (projects.projects.length > 0) {
-    for (i in projects.projects) {
+    for (var i in projects.projects) {
       $("#projects").append(HTMLprojectStart);
 
       var formattedProjectTitle = HTMLprojectTitle.replace("%data%", projects.projects[i].title).replace("#", projects.projects[i].url);
@@ -126,7 +126,7 @@ projects.display = function() {
 
     }
   }
-}
+};
 //projects.display = function() {
 // for (i in projects.projects) {
 //   $("#project").append(HTMLprojectStart);
@@ -212,11 +212,11 @@ if (bio.skills.length > 0) {
 }
 
 function displayWork() {
-  for (job in work.jobs) {
+  for (var job in work.jobs) {
     $("#workExperience").append(HTMLworkStart);
     var formattedEmployer = HTMLworkEmployer.replace("%data%", work.jobs[job].employer);
     var formattedTitle = HTMLworkTitle.replace("%data%", work.jobs[job].title);
-    var formattedEmployereTitle = formattedEmployer + formattedTitle
+    var formattedEmployereTitle = formattedEmployer + formattedTitle;
     //formattedEmployerTitle is a concatenation串联 of formattedEmployer and formattedTitle
     $(".work-entry:last").append(formattedEmployereTitle);
     var formattedDates = HTMLworkDates.replace("%data%", work.jobs[job].dates);
@@ -249,7 +249,8 @@ function displayOnlineSchool() {
 
     }
   }
-};
+}
+
 displayOnlineSchool();
 
 $("#mapDiv").append(googleMap);
