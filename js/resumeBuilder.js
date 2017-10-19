@@ -171,7 +171,7 @@ var education = {
     "dates": 2017,
     "url": "udacity.com"
   }
-}
+};
 projects.display();
 
 
