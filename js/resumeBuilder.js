@@ -126,13 +126,13 @@ projects.display = function() {
             $(".project-entry:last").append(formattedProjectDates);
             $(".project-entry:last").append(formattedProjectDescription);
 
-            // if (projects.projects.images.length > 0) {
-            //   for (var pIm = 0; pIm < projects.images.length; pIm++) {
-            //   	var formattedProjectImage = HTMLprojectImage.replace(data, projects.projects[pIm].images);
-            // 	$("project-entry:last").append(formattedProjectImage);
-            //   }
+            if (projects.projects.images.length > 0) {
+              for (var pIm = 0; pIm < projects.images.length; pIm++) {
+              	var formattedProjectImage = HTMLprojectImage.replace(data, projects.projects[pIm].images);
+            	$("project-entry:last").append(formattedProjectImage);
+              }
             
-            // }
+            }
 
         }
     }
