@@ -19,23 +19,23 @@ var bio = {
 
 bio.display = function() {
 	
-    var formattedName = HTMLheaderName.replace(data, bio.name[b]);
-    var formattedRole = HTMLheaderRole.replace(data, bio.role[b]);
+    var formattedName = HTMLheaderName.replace(data, bio.name);
+    var formattedRole = HTMLheaderRole.replace(data, bio.role);
 
-    var formattedMobile = HTMLmobile.replace(data, bio.contacts[b].mobile);
-    var formattedEmail = HTMLemail.replace(data, bio.contacts[b].email);
-    var formattedGithub = HTMLgithub.replace(data, bio.contacts[b].github);
-    var formattedLocation = HTMLlocation.replace(data, bio.contacts[b].location);
-    var formattedWelcome = HTMLwelcomeMsg.replace(data, bio.welcomeMessage[b]);
-    var formattedBiopic = HTMLbioPic.replace(data, bio.biopi[b]);
+    var formattedMobile = HTMLmobile.replace(data, bio.contacts.mobile);
+    var formattedEmail = HTMLemail.replace(data, bio.contacts.email);
+    var formattedGithub = HTMLgithub.replace(data, bio.contacts.github);
+    var formattedLocation = HTMLlocation.replace(data, bio.contacts.location);
+    var formattedWelcome = HTMLwelcomeMsg.replace(data, bio.welcomeMessage);
+    var formattedBiopic = HTMLbioPic.replace(data, bio.biopic);
 
-    $("#header", "#footerContacts").append(formattedName);
-    $("#header", "#footerContacts").append(formattedRole);
-    $("#header", "#footerContacts").append(formattedBiopic);
-    $("#header", "#footerContacts").append(formattedMobile);
-    $("#header", "#footerContacts").append(formattedEmail);
-    $("#header", "#footerContacts").append(formattedGithub);
-    $("#header", "#footerContacts").append(formattedLocation);
+ 	$("#header").prepend(formattedRole);
+    $("#header").prepend(formattedName);
+    $("#header").append(formattedBiopic);
+    $("#topContacts, #footerContacts").append(formattedMobile);
+    $("#topContacts, #footerContacts").append(formattedEmail);
+    $("#topContacts, #footerContacts").append(formattedGithub);
+    $("#topContacts").append(formattedLocation);
     $("#header").append(formattedWelcome);
 
     if (bio.skills.length > 0) {
@@ -82,19 +82,21 @@ var work = {
 };
 
 work.display = function () {
-    for (var job = 0 ; job < work.jobs; job++) {
-        $("#workExperience").append(HTMLworkStart);
-        var formattedEmployer = HTMLworkEmployer.replace(data, work.jobs[job].employer);
-        var formattedTitle = HTMLworkTitle.replace(data, work.jobs[job].title);
-        var formattedEmployereTitle = formattedEmployer + formattedTitle;
-        $(".work-entry:last").append(formattedEmployereTitle);
-        var formattedDates = HTMLworkDates.replace(data, work.jobs[job].dates);
-        $(".work-entry:last").append(formattedDates);
-        var formattedLocation = HTMLworkLocation.replace(data, work.jobs[job].location);
-        $(".work-entry:last").append(formattedLocation);
-        var formattedDescription = HTMLworkDescription.replace(data, work.jobs[job].description);
-        $(".work-entry:last").append(formattedDescription);
-    }
+	if (work.jobs.length > 0){
+	    for (var j = 0 ; j < work.jobs.length; j++) {
+	       $("#workExperience").append(HTMLworkStart);
+	        var formattedEmployer = HTMLworkEmployer.replace(data, work.jobs[j].employer);
+	        var formattedTitle = HTMLworkTitle.replace(data, work.jobs[j].title);
+	        var formattedEmployereTitle = formattedEmployer + formattedTitle;
+	        $(".work-entry:last").append(formattedEmployereTitle);
+	        var formattedDates = HTMLworkDates.replace(data, work.jobs[j].dates);
+	        $(".work-entry:last").append(formattedDates);
+	        var formattedLocation = HTMLworkLocation.replace(data, work.jobs[j].location);
+	        $(".work-entry:last").append(formattedLocation);
+	        var formattedDescription = HTMLworkDescription.replace(data, work.jobs[j].description);
+	        $(".work-entry:last").append(formattedDescription);
+	    }
+	}
 };
 work.display();
 //End of Work
@@ -106,7 +108,7 @@ var projects = {
         "title": "Build a Portfolio Site",
         "dates": "July 2017",
         "description": "Created a mockup of a portfolio site",
-        "images": "images/food1.jpg"
+        "images": ["images/food1.jpg"]
     }]
 };
 projects.display = function() {
@@ -117,18 +119,19 @@ projects.display = function() {
             var formattedProjectTitle = HTMLprojectTitle.replace(data, projects.projects[p].title).replace("#", projects.projects[p].url);
             var formattedProjectDates = HTMLprojectDates.replace(data, projects.projects[p].dates);
             var formattedProjectDescription = HTMLprojectDescription.replace(data, projects.projects[p].description);
-            var formattedProjectImage = HTMLprojectImage.replace(data, projects.projects[p].images);
-            $("project-entry:last").append(formattedProjectImage);
+            
+            
 
             $(".project-entry:last").append(formattedProjectTitle);
             $(".project-entry:last").append(formattedProjectDates);
             $(".project-entry:last").append(formattedProjectDescription);
 
-            // if (projects.images.length > 0) {
+            // if (projects.projects.images.length > 0) {
             //   for (var pIm = 0; pIm < projects.images.length; pIm++) {
-            //
+            //   	var formattedProjectImage = HTMLprojectImage.replace(data, projects.projects[pIm].images);
+            // 	$("project-entry:last").append(formattedProjectImage);
             //   }
-            //
+            
             // }
 
         }
@@ -142,27 +145,27 @@ projects.display();
 var education = {
     "schools": [{
             "name": "Laguardia Community Colege",
-            "city": "Laguardia, NY",
+            "location": "Laguardia, NY",
             "degree": "Udacity NanoDegree",
-            "majors": "TechImpact Front-End Web Development",
+            "majors": ["TechImpact Front-End Web Development"],
             "dates": 2017,
             "url": "www.laguardia.edu/techhire-opencode/"
         },
         {
             "name": "York College CUNY",
-            "city": "Jamaica, NY",
+            "location": "Jamaica, NY",
             "degree": "Bachelors of Science",
-            "majors": "Communications Technology",
+            "majors": ["Communications Technology"],
             "dates": 2015,
             "url": "www.york.cuny.edu"
         },
     ],
-    "onlineCourses": {
+    "onlineCourses": [{
         "title": "Front-End Web Development",
         "school": "Udacity",
         "dates": 2017,
         "url": "udacity.com"
-    }
+    }]
 };
 
 
@@ -176,21 +179,16 @@ education.display = function () {
             var formattedSchoolDates = HTMLschoolDates.replace(data, education.schools[s].dates);
             var formattedSchoolLocation = HTMLschoolLocation.replace(data, education.schools[s].city);
             var formattedSchoolMajor = HTMLschoolMajor.replace(data, education.schools[s].majors);
-            $("#education ").append(formattedSchoolName);
-            $("#education").append(formattedSchoolDegree);
-            $("#education").append(formattedSchoolDates);
-            $("#education").append(formattedSchoolMajor);
+            $(".education-entry:last ").append(formattedSchoolName);
+            $(".education-entry:last").append(formattedSchoolDegree);
+            $(".education-entry:last").append(formattedSchoolDates);
+            $(".education-entry:last").append(formattedSchoolMajor);
 
         }
     }
-}
-
-education.display();
-//End of School
-
-onlineSchool.display = function() {
     if (education.onlineCourses.length > 0) {
         $("#education").append(HTMLonlineClasses);
+        $("#education").append(HTMLschoolStart);
         for (var i = 0; i < education.onlineCourses.length; i++) {
 
             var formattedonlineTitle = HTMLonlineTitle.replace(data, education.onlineCourses[i].title);
@@ -205,9 +203,10 @@ onlineSchool.display = function() {
 
         }
     }
-}
+};
 
-onlineSchool.display();
-//End of online courses
+education.display();
+//End of School
+		
 
 $("#mapDiv").append(googleMap);
