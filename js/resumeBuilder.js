@@ -126,14 +126,12 @@ projects.display = function() {
             $(".project-entry:last").append(formattedProjectDates);
             $(".project-entry:last").append(formattedProjectDescription);
 
-           
-         	for (img in projects.projects[p].images) {
-            	var formattedProjectImage = HTMLprojectImage.replace(data, projects.projects[p].images[img]);
-            	$(".project-entry:last").append(formattedProjectImage);
-        	}
         
-            
-        }	
+	        for (img in projects.projects[p].images) {
+	           var formattedProjectImage = HTMLprojectImage.replace(data, projects.projects[p].images[img]);
+	           $(".project-entry:last").append(formattedProjectImage);
+	        }   	
+ 		}
     }
 };
 projects.display();
