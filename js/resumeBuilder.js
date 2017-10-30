@@ -17,42 +17,40 @@ var bio = {
 
 
 
-function displayBio() {
-    var formattedName = HTMLheaderName.replace(data, bio.name);
-    var formattedRole = HTMLheaderRole.replace(data, bio.role);
+bio.display = function() {
+	
+    var formattedName = HTMLheaderName.replace(data, bio.name[b]);
+    var formattedRole = HTMLheaderRole.replace(data, bio.role[b]);
 
-    var formattedMobile = HTMLmobile.replace(data, bio.contacts.mobile);
-    var formattedEmail = HTMLemail.replace(data, bio.contacts.email);
-    var formattedGithub = HTMLgithub.replace(data, bio.contacts.github);
-    var formattedLocation = HTMLlocation.replace(data, bio.contacts.location);
-    var formattedWelcome = HTMLwelcomeMsg.replace(data, bio.welcomeMessage);
-    var formattedBiopic = HTMLbioPic.replace(data, bio.biopic);
+    var formattedMobile = HTMLmobile.replace(data, bio.contacts[b].mobile);
+    var formattedEmail = HTMLemail.replace(data, bio.contacts[b].email);
+    var formattedGithub = HTMLgithub.replace(data, bio.contacts[b].github);
+    var formattedLocation = HTMLlocation.replace(data, bio.contacts[b].location);
+    var formattedWelcome = HTMLwelcomeMsg.replace(data, bio.welcomeMessage[b]);
+    var formattedBiopic = HTMLbioPic.replace(data, bio.biopi[b]);
 
-    $("#header").append(formattedName);
-    $("#header").append(formattedRole);
-    $("#header").append(formattedBiopic);
-    $("#header").append(formattedMobile);
-    $("#header").append(formattedEmail);
-    $("#header").append(formattedGithub);
-    $("#header").append(formattedLocation);
+    $("#header", "#footerContacts").append(formattedName);
+    $("#header", "#footerContacts").append(formattedRole);
+    $("#header", "#footerContacts").append(formattedBiopic);
+    $("#header", "#footerContacts").append(formattedMobile);
+    $("#header", "#footerContacts").append(formattedEmail);
+    $("#header", "#footerContacts").append(formattedGithub);
+    $("#header", "#footerContacts").append(formattedLocation);
     $("#header").append(formattedWelcome);
-    $("#footerContacts").append(formattedName);
-    $("#footerContacts").append(formattedMobile);
-    $("#footerContacts").append(formattedEmail);
-    $("#footerContacts").append(formattedGithub);
-    $("#footerContacts").append(formattedLocation);
 
     if (bio.skills.length > 0) {
         $("#header").append(HTMLskillsStart);
         for (var sk = 0; sk < bio.skills.length; sk++) {
             var formattedSkill = HTMLskills.replace(data, bio.skills[sk]);
             $("#skills").append(formattedSkill);
+
         }
 
     }
+		
+};
 
-}
-displayBio();
+bio.display();
 //End of bio
 
 
@@ -83,8 +81,8 @@ var work = {
     ]
 };
 
-function displayWork() {
-    for (var job in work.jobs) {
+work.display = function () {
+    for (var job = 0 ; job < work.jobs; job++) {
         $("#workExperience").append(HTMLworkStart);
         var formattedEmployer = HTMLworkEmployer.replace(data, work.jobs[job].employer);
         var formattedTitle = HTMLworkTitle.replace(data, work.jobs[job].title);
@@ -97,8 +95,8 @@ function displayWork() {
         var formattedDescription = HTMLworkDescription.replace(data, work.jobs[job].description);
         $(".work-entry:last").append(formattedDescription);
     }
-}
-displayWork();
+};
+work.display();
 //End of Work
 
 
@@ -169,7 +167,7 @@ var education = {
 
 
 
-function displaySchool() {
+education.display = function () {
     if (education.schools.length > 0) {
         $("#education").append(HTMLschoolStart);
         for (var s = 0; s < education.schools.length; s++) {
@@ -187,10 +185,10 @@ function displaySchool() {
     }
 }
 
-displaySchool();
+education.display();
 //End of School
 
-function displayOnlineSchool() {
+onlineSchool.display = function() {
     if (education.onlineCourses.length > 0) {
         $("#education").append(HTMLonlineClasses);
         for (var i = 0; i < education.onlineCourses.length; i++) {
@@ -209,7 +207,7 @@ function displayOnlineSchool() {
     }
 }
 
-displayOnlineSchool();
+onlineSchool.display();
 //End of online courses
 
 $("#mapDiv").append(googleMap);
