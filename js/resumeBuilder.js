@@ -108,7 +108,7 @@ var projects = {
         "title": "Build a Portfolio Site",
         "dates": "July 2017",
         "description": "Created a mockup of a portfolio site",
-        "images": ["images/food1.jpg"]
+        "images": ["images/food1.jpg", "images/food2.jpg"]
     }]
 };
 projects.display = function() {
@@ -126,15 +126,14 @@ projects.display = function() {
             $(".project-entry:last").append(formattedProjectDates);
             $(".project-entry:last").append(formattedProjectDescription);
 
-            if (projects.projects.images.length > 0) {
-              for (var pIm = 0; pIm < projects.images.length; pIm++) {
-              	var formattedProjectImage = HTMLprojectImage.replace(data, projects.projects[pIm].images);
-            	$("project-entry:last").append(formattedProjectImage);
-              }
+           
+         	for (img in projects.projects[p].images) {
+            	var formattedProjectImage = HTMLprojectImage.replace(data, projects.projects[p].images[img]);
+            	$(".project-entry:last").append(formattedProjectImage);
+        	}
+        
             
-            }
-
-        }
+        }	
     }
 };
 projects.display();
