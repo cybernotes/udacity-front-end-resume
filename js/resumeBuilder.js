@@ -31,13 +31,10 @@ bio.display = function() {
 
  	$("#header").prepend(formattedRole);
     $("#header").prepend(formattedName);
-    $("#header").append(formattedBiopic);
-    $("#topContacts, #footerContacts").append(formattedMobile);
-    $("#topContacts, #footerContacts").append(formattedEmail);
-    $("#topContacts, #footerContacts").append(formattedGithub);
+    $("#header").append(formattedBiopic, formattedWelcome);
+    $("#topContacts, #footerContacts").append(formattedMobile, formattedEmail, formattedGithub);
     $("#topContacts").append(formattedLocation);
-    $("#header").append(formattedWelcome);
-
+    
     if (bio.skills.length > 0) {
         $("#header").append(HTMLskillsStart);
         for (var sk = 0; sk < bio.skills.length; sk++) {
@@ -145,7 +142,7 @@ var education = {
             "location": "Laguardia, NY",
             "degree": "Udacity NanoDegree",
             "majors": ["TechImpact Front-End Web Development"],
-            "dates": 2017,
+            "dates": "2017",
             "url": "www.laguardia.edu/techhire-opencode/"
         },
         {
@@ -153,14 +150,14 @@ var education = {
             "location": "Jamaica, NY",
             "degree": "Bachelors of Science",
             "majors": ["Communications Technology"],
-            "dates": 2015,
+            "dates": "2015",
             "url": "www.york.cuny.edu"
         },
     ],
     "onlineCourses": [{
         "title": "Front-End Web Development",
         "school": "Udacity",
-        "dates": 2017,
+        "dates": "2017",
         "url": "udacity.com"
     }]
 };
